@@ -90,7 +90,12 @@ function path(String $name)
 function redirect(String $name, Array $params = []) 
 {
     $path = path($name);
-    $query = http_build_query($params);
-    header("Location: {$path}?{$query}");
+    if ($params != []) {
+        $query = http_build_query($params);
+        header("Location: {$path}?{$query}");
+    } else {
+        header("Location: {$path}");
+    }
+
     exit;
 }
