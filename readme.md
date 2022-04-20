@@ -1,6 +1,9 @@
 ![](https://github.com/NotReeceHarris/NotReeceHarris/blob/main/cdn/prototype-FRAMEWORK-logo.png?raw=true)
 
 ## Minimul setup
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/aba066d14f8b4f548f05b15d386d9cc4)](https://app.codacy.com/gh/NotReeceHarris/Prototype?utm_source=github.com&utm_medium=referral&utm_content=NotReeceHarris/Prototype&utm_campaign=Badge_Grade_Settings)
+
 ```php
 <?php
 
