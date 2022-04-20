@@ -1,43 +1,37 @@
 ![](https://github.com/NotReeceHarris/NotReeceHarris/blob/main/cdn/prototype-FRAMEWORK-logo.png?raw=true)
 
-## Minimul setup
+## ⚙️ Minimul setup
 ```php
-<?php
+require_once './src/prototype/autoload.php';
 
-require_once "./func/router.php";
-require_once "./func/template.php";
-
-
+/** @param string $name 
+ *  @param string $path
+ *  @param function $callback
+ *  @param array|optional $method
+ */
 route('foo', '/', function () {
-    return redirect('bar', ['baz'=>'Lorem']);
+    return redirect('bar', ['baz' => 'prototype'], true);
 }, ['GET']);
 
-route('bar', '/bar/{baz}', function ($baz) {
-    return template('/home.php', ['bar'=>$baz]);
+route('bar', '/bar/', function () {
+    return 'Try out ' . $_GET['baz'] . ' now!';
 }, ['GET']);
 
-$path = $_SERVER['REQUEST_URI'];
-dispatch($path);
+serve();
 ```
 
-## Structured enviroment
-```tree
+## 📦 Structured enviroment
+```php
 html/
-├─ func/
-│  ├─ router.php
-│  └ template.php
+├─ src/
+│  └ prototype/ // Put prototype source here
 ├─ template/
 │  └ home.php
 ├─ .htaccess
 └ index.php
 ```
 
-## Features
-- Dynamic routing
-- Auto html minify
-- Templating
-  - pass vars
-- Redirects
-  - pass http params
-- Paths
-- Method security
+## 🔗 Links
+- [Wiki](https://github.com/NotReeceHarris/Prototype/wiki)
+- [Submit Security Vulnerabilities](https://github.com/NotReeceHarris/Prototype/wiki)
+- [Codacy](https://app.codacy.com/gh/NotReeceHarris/Prototype/dashboard)
