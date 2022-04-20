@@ -53,14 +53,14 @@ function serve(string|bool $host = false, string|bool $port = false) {
 
     /* Compartmentalize */
 
-    foreach ($routes as $route => $handler) {
+    foreach ($routes as $route) {
 
-        $routePath = trim($handler['path'], '/');
+        $routePath = trim($route['path'], '/');
         $routePath = preg_replace('/{[^}]+}/', '(.+)', $routePath);
         $routePath = rtrim($routePath, '?');
 
         if (preg_match("%^{$routePath}$%", $path, $matches) === 1) {
-            $callback = $handler;
+            $callback = $route;
             $params = array_slice($matches, 1);
             break;
         }
