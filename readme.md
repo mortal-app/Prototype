@@ -1,5 +1,7 @@
 ![](https://github.com/NotReeceHarris/NotReeceHarris/blob/main/cdn/prototype-FRAMEWORK-logo.png?raw=true)
 
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/33fce443d5044910a027d0f5bd449771)](https://www.codacy.com/gh/NotReeceHarris/Prototype/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=NotReeceHarris/Prototype&amp;utm_campaign=Badge_Grade)
+
 ## Minimul setup
 ```php
 <?php
