@@ -4,10 +4,8 @@
 
 ## Minimul setup
 ```php
-<?php
-
 require_once "./func/router.php";
-require_once "./func/template.php";
+require_once "./func/templater.php";
 
 
 route('foo', '/', function () {
