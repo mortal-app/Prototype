@@ -72,14 +72,14 @@ function serve(string|bool $host = false, string|bool $port = false) {
         if (isset($routes['Error400'])) {
             redirect('Error400');
         } else {
-            throwError('404', 'Sorry, the page you are looking for could not be found.');
+            throwError('404', 'Sorry, the page you are looking for could not be found. but you can always try again');
         }
     }
 
     /* 405 Page return */
 
     if (!in_array($_SERVER["REQUEST_METHOD"], $callback['method']) && $callback['method'] !== []) {
-        throwError('405', 'Method "' . $_SERVER["REQUEST_METHOD"] . '" not allowed');	
+        throwError('405', 'The method "' . $_SERVER["REQUEST_METHOD"] . '" is not allowed, please try again with one of the following methods "' . implode(', ', $callback['method']) . '"' );	
     }
 
     /* Callback */
@@ -91,11 +91,11 @@ function serve(string|bool $host = false, string|bool $port = false) {
  *
  * @param  string $name
  * @param  string $path
- * @param  function $callback
- * @param  array $method
+ * @param  closure $callback
+ * @param  array|null $method
  * @return void
  */
-function route($name, $path, $callback, $method = []) {
+function route(string $name, string $path, closure $callback, array|null $method = []) {
     global $routes;
 
     $routes[$name] = [
