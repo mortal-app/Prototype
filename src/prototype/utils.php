@@ -56,7 +56,7 @@ function redirect(String $name, Array $params = [], bool $pathName = true) {
  * @return string $path
  */
 function asset(string $name) {
-    return '/../static/' . $name;
+    return '/../../static/' . $name;
 }
 
 /**
