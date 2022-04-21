@@ -23,7 +23,8 @@ serve();
 ## 📦 Structured enviroment
 ```php
 html/
-├─ src/ // Put prototype source here
+├─ src/
+│  └ prototype/
 ├─ template/
 │  └ home.php
 ├─ .htaccess
