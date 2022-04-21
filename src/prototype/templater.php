@@ -17,7 +17,7 @@
  * @return string $content
  */
 function template($file, $args = []) {
-    $filePath = __DIR__ . '/../templates/' . $file;
+    $filePath = __DIR__ . '/../../templates/' . $file;
 
     if (!file_exists($filePath)) {
         throwError('500', 'The template file "' . $file . '" does not exist.');
