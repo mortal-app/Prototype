@@ -26,12 +26,12 @@ function serve(string|bool $host = false, string|bool $port = false) {
 
     /* Validate host */
     if ($host !== $link && $host !== false) {
-        throwError('500', 'Your host is set as "' . $host . '" however you visit from "' . $link . '"');
+        throwError('403 Forbidden', 'Your host is set as "' . $host . '" however you visit from "' . $link . '"');
     }
 
     /* Validate port */
     if ($port !== $_SERVER['SERVER_PORT'] && $port !== false) {
-        throwError('500', 'Your port is set as "' . $port . '" however you visit from "' . $_SERVER['SERVER_PORT'] . '"');
+        throwError('403 Forbidden', 'Your port is set as "' . $port . '" however you visit from "' . $_SERVER['SERVER_PORT'] . '"');
     }
 
     /* Validate url */
@@ -39,7 +39,7 @@ function serve(string|bool $host = false, string|bool $port = false) {
     $path = filter_var($link, FILTER_VALIDATE_URL);
 
     if (empty($path)) {
-        throwError('400', 'Malformed url');
+        throwError('400 Bad Request', 'Malformed url');
     } else {
         $path = parse_url($path, PHP_URL_PATH);
     }
@@ -72,14 +72,14 @@ function serve(string|bool $host = false, string|bool $port = false) {
         if (isset($routes['Error400'])) {
             redirect('Error400');
         } else {
-            throwError('404', 'Sorry, the page you are looking for could not be found. but you can always try again');
+            throwError('404 Not Found', 'Sorry, the page you are looking for could not be found. but you can always try again');
         }
     }
 
     /* 405 Page return */
 
     if (!in_array($_SERVER["REQUEST_METHOD"], $callback['method']) && $callback['method'] !== []) {
-        throwError('405', 'The method "' . $_SERVER["REQUEST_METHOD"] . '" is not allowed, please try again with one of the following methods "' . implode(', ', $callback['method']) . '"' );	
+        throwError('405 Method Not Allowed', 'The method "' . $_SERVER["REQUEST_METHOD"] . '" is not allowed, please try again with one of the following methods "' . implode(', ', $callback['method']) . '"' );	
     }
 
     /* Callback */
