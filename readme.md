@@ -1,4 +1,4 @@
-![](https://github.com/NotReeceHarris/NotReeceHarris/blob/main/cdn/prototype-FRAMEWORK-logo.png?raw=true)
+![](https://github.com/NotReeceHarris/NotReeceHarris/blob/main/cdn/prototype-logo.png?raw=true)
 
 [![Codacy Security Scan](https://github.com/NotReeceHarris/Prototype/actions/workflows/codacy.yml/badge.svg)](https://github.com/NotReeceHarris/Prototype/actions/workflows/codacy.yml)
 
