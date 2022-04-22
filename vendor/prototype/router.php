@@ -14,24 +14,29 @@ $routes = [];
 /**
  * dispatch
  *
- * @param  string $host
- * @param  string $port
+ * @param  array|null $config
  * @return function $callback
  */
-function serve(string|bool $host = false, string|bool $port = false) {
+function serve(array|null $config = []) {
     global $routes;
 
-    if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {$link = "https";} else {$link = "http";}
-    $link .= "://" . $_SERVER['HTTP_HOST'];
+    /* Build url */
+    if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
+        $link = "https://";
+    } else {
+        $link = "http://";
+    }
+
+    $link .= $_SERVER['HTTP_HOST'];
 
     /* Validate host */
-    if ($host !== $link && $host !== false) {
-        throwError('403 Forbidden', 'Your host is set as "' . $host . '" however you visit from "' . $link . '"');
+    if (isset($config['host']) && strtolower($config['host']) !== strtolower($link)) {
+        throwError('403 Forbidden', 'Your host is set as "' . $config['host'] . '" however you visit from "' . $link . '"');
     }
 
     /* Validate port */
-    if ($port !== $_SERVER['SERVER_PORT'] && $port !== false) {
-        throwError('403 Forbidden', 'Your port is set as "' . $port . '" however you visit from "' . $_SERVER['SERVER_PORT'] . '"');
+    if (isset($config['port']) && strval($config['port']) !== $_SERVER['SERVER_PORT']) {
+        throwError('403 Forbidden', 'Your port is set as "' . $config['port'] . '" however you visit from "' . $_SERVER['SERVER_PORT'] . '"');
     }
 
     /* Validate url */
@@ -45,14 +50,12 @@ function serve(string|bool $host = false, string|bool $port = false) {
     }
 
     /* Prepare path */
-
     $path = trim($path, '/');
     $path = explode('?', $path)[0];
     $callback = null;
     $params = [];
 
     /* Compartmentalize */
-
     foreach ($routes as $route) {
 
         $routePath = trim($route['path'], '/');
@@ -67,7 +70,6 @@ function serve(string|bool $host = false, string|bool $port = false) {
     }
 
     /* 404 Page return */
-
     if(!$callback || !is_callable($callback['callback'])) {
         if (isset($routes['Error400'])) {
             redirect('Error400');
@@ -77,13 +79,19 @@ function serve(string|bool $host = false, string|bool $port = false) {
     }
 
     /* 405 Page return */
-
     if (!in_array($_SERVER["REQUEST_METHOD"], $callback['method']) && $callback['method'] !== []) {
         throwError('405 Method Not Allowed', 'The method "' . $_SERVER["REQUEST_METHOD"] . '" is not allowed, please try again with one of the following methods "' . implode(', ', $callback['method']) . '"' );	
     }
 
     /* Callback */
     echo call_user_func_array($callback['callback'], $params);
+    header('Framework: Prototype 1.0.0');
+
+    if (!empty($config['header'])){
+        foreach ($config['header'] as $key => $value) {
+            header($key . ': ' . $value);
+        }
+    }
 }
 
 /**
