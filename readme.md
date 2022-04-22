@@ -1,5 +1,7 @@
 ![](https://github.com/NotReeceHarris/NotReeceHarris/blob/main/cdn/prototype-FRAMEWORK-logo.png?raw=true)
 
+[![Codacy Security Scan](https://github.com/NotReeceHarris/Prototype/actions/workflows/codacy.yml/badge.svg)](https://github.com/NotReeceHarris/Prototype/actions/workflows/codacy.yml)
+
 ## ⚙️ Minimul setup
 ```php
 require_once './src/prototype/autoload.php';
