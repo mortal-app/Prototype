@@ -41,6 +41,7 @@ root
 ### Setup configuration
 
 1. Setup rewite config
+
   ```apache
 # .htaccess // Apache
 
