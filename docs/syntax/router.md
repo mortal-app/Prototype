@@ -17,9 +17,7 @@ nav_order: 2
 ---
 
 ## `route(name:string, path:string, callback:closure, method:array|null)`
-
 Example
-
 ```php
 /**
  * route
@@ -37,9 +35,7 @@ route('foo', '/', function () {
 ```
 
 ## `serve(config:array|null)`
-
 Example
-  
 ```php
 /**
  * dispatch
