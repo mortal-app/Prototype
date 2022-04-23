@@ -17,6 +17,7 @@ nav_order: 3
 ---
 
 ## `template(file:string, args:array|null)`
+
 Example
 
 ```php 
