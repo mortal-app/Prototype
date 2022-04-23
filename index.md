@@ -12,7 +12,7 @@ permalink: /
 Prototype gives you a simple, secure, scalable, and minimal framework. while handling complex features.
 {: .fs-6 .fw-300 }
 
-[Get started now](#getting-started){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 } [View it on GitHub](https://github.com/just-the-docs/just-the-docs){: .btn .fs-5 .mb-4 .mb-md-0 }
+[Get started now](#getting-started){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 } [View it on GitHub](https://github.com/NotReeceHarris/Prototype){: .btn .fs-5 .mb-4 .mb-md-0 }
 
 ---
 
@@ -20,72 +20,67 @@ Prototype gives you a simple, secure, scalable, and minimal framework. while han
 
 ### Dependencies
 
-Just the Docs is built for [Jekyll](https://jekyllrb.com), a static site generator. View the [quick start guide](https://jekyllrb.com/docs/) for more information. Just the Docs requires no special plugins and can run on GitHub Pages' standard Jekyll compiler. The [Jekyll SEO Tag plugin](https://github.com/jekyll/jekyll-seo-tag) is included by default (no need to run any special installation) to inject SEO and open graph metadata on docs pages. For information on how to configure SEO and open graph metadata visit the [Jekyll SEO Tag usage guide](https://jekyll.github.io/jekyll-seo-tag/usage/).
+Prototype is built for [PHP](https://www.php.net/), a general-purpose scripting language that is especially suited to web development. View the [docs](https://www.php.net/docs.php) for more information. Prototype requires no special plugins and can run on Apache, Ngix, or most php servers.
 
-### Quick start: Use as a GitHub Pages remote theme
+### Quick start: Use prototype as a Static router
 
-1. Add Just the Docs to your Jekyll site's `_config.yml` as a [remote theme](https://blog.github.com/2017-11-29-use-any-theme-with-github-pages/)
+1. Setup your enviroment
 
-```yaml
-remote_theme: just-the-docs/just-the-docs
+```
+root
+    |-- vendor/
+    |   `-- prototype/
+    |-- static/
+    |-- templates/
+    |-- .htaccess
+    `-- index.php
 ```
 
-<small>You must have GitHub Pages enabled on your repo, one or more Markdown files, and a `_config.yml` file. [See an example repository](https://github.com/pmarsceill/jtd-remote)</small>
+<small>You must have rewrites enabled on your server,  if your using apache here is the `mod_rewrite` [doc](https://httpd.apache.org/docs/current/mod/mod_rewrite.html)</small>
 
-### Local installation: Use the gem-based theme
+### Setup configuration
 
-1. Install the Ruby Gem
-  ```bash
-  $ gem install just-the-docs
-  ```
-  ```yaml
-  # .. or add it to your your Jekyll site’s Gemfile
-  gem "just-the-docs"
-  ```
+1. Setup rewite config
+  ```apache
+# .htaccess // Apache
 
-2. Add Just the Docs to your Jekyll site’s `_config.yml`
-  ```yaml
-  theme: "just-the-docs"
-  ```
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+    RewriteRule ^index\.php$ - [L]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule . /index.php [L]
+</IfModule>
+```
+```nginx
+# nginx.conf // Ngix
 
-3. _Optional:_ Initialize search data (creates `search-data.json`)
-  ```bash
-  $ bundle exec just-the-docs rake search:init
-  ```
+location = /index.php { }
 
-3. Run you local Jekyll server
-  ```bash
-  $ jekyll serve
-  ```
-  ```bash
-  # .. or if you're using a Gemfile (bundler)
-  $ bundle exec jekyll serve
-  ```
+location / {
+  if (!-e $request_filename){
+    rewrite ^(.*)$ /index.php break;
+  }
+}
+```
 
-4. Point your web browser to [http://localhost:4000](http://localhost:4000)
-
-If you're hosting your site on GitHub Pages, [set up GitHub Pages and Jekyll locally](https://help.github.com/en/articles/setting-up-your-github-pages-site-locally-with-jekyll) so that you can more easily work in your development environment.
-
-### Configure Just the Docs
+### Configure Prototype
 
 - [See configuration options]({{ site.baseurl }}{% link docs/configuration.md %})
 
 ---
 
-## About the project
-
-Just the Docs is &copy; 2017-{{ "now" | date: "%Y" }} by [Patrick Marsceill](http://patrickmarsceill.com).
-
 ### License
 
-Just the Docs is distributed by an [MIT license](https://github.com/just-the-docs/just-the-docs/tree/main/LICENSE.txt).
+Prototype is distributed by an [GPL-3.0 License ](https://github.com/NotReeceHarris/Prototype/blob/Production/LICENSE).
 
 ### Contributing
 
 When contributing to this repository, please first discuss the change you wish to make via issue,
-email, or any other method with the owners of this repository before making a change. Read more about becoming a contributor in [our GitHub repo](https://github.com/just-the-docs/just-the-docs#contributing).
+email, or any other method with the owners of this repository before making a change. Read more about becoming a contributor in [our GitHub repo](https://github.com/notreeceharris/prototype#contributing).
 
-#### Thank you to the contributors of Just the Docs!
+#### Thank you to the contributors of Prototype!
 
 <ul class="list-style-none">
 {% for contributor in site.github.contributors %}
@@ -97,6 +92,6 @@ email, or any other method with the owners of this repository before making a ch
 
 ### Code of Conduct
 
-Just the Docs is committed to fostering a welcoming community.
+Prototype is committed to fostering a welcoming community.
 
-[View our Code of Conduct](https://github.com/just-the-docs/just-the-docs/tree/main/CODE_OF_CONDUCT.md) on our GitHub repository.
+[View our Code of Conduct](https://github.com/NotReeceHarris/Prototype/blob/Production/CODE_OF_CONDUCT.md) on our GitHub repository.
