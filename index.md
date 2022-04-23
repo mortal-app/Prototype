@@ -66,6 +66,22 @@ location / {
 }
 ```
 
+2. Setup `index.php`
+
+```php
+require_once __DIR__ . './vendor/prototype/autoload.php';
+
+route('foo', '/', function () {
+    return 'hello world';
+}, ['GET']);
+
+serve([
+    'host' => 'http://localhost',
+    'port' => 80,
+    'header' => $prototype_header_secure
+]);
+```
+
 ### Configure Prototype
 
 - [See configuration options]({{ site.baseurl }}{% link docs/configuration.md %})
