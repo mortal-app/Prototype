@@ -1,4 +1,6 @@
-<?php /**
+<?php
+
+/**
  *  ___ ___  ___ _____ ___ _______   _____ ___ 
  * | _ \ _ \/ _ \_   _/ _ \_   _\ \ / / _ \ __|
  * |  _/   / (_) || || (_) || |  \ V /|  _/ _| 
@@ -17,17 +19,11 @@ $routes = [];
  * @param  array|null $config
  * @return function $callback
  */
-function serve(array|null $config = []) {
+function serve(array|null $config = [])
+{
     global $routes;
 
-    /* Build url */
-    if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
-        $link = "https://";
-    } else {
-        $link = "http://";
-    }
-
-    $link .= $_SERVER['HTTP_HOST'];
+    $link = $_SERVER['HTTP_ORIGIN'];
 
     /* Validate host */
     if (isset($config['host']) && strtolower($config['host']) !== strtolower($link)) {
@@ -70,7 +66,7 @@ function serve(array|null $config = []) {
     }
 
     /* 404 Page return */
-    if(!$callback || !is_callable($callback['callback'])) {
+    if (!$callback || !is_callable($callback['callback'])) {
         if (isset($routes['Error400'])) {
             redirect('Error400');
         } else {
@@ -80,14 +76,24 @@ function serve(array|null $config = []) {
 
     /* 405 Page return */
     if (!in_array($_SERVER["REQUEST_METHOD"], $callback['method']) && $callback['method'] !== []) {
-        throwError('405 Method Not Allowed', 'The method "' . $_SERVER["REQUEST_METHOD"] . '" is not allowed, please try again with one of the following methods "' . implode(', ', $callback['method']) . '"' );	
+        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+            throwError('405 Method Not Allowed', 'The method \'' . $_SERVER["REQUEST_METHOD"] . '\' is not allowed, please try again with one of the following method(s) \'' . implode(', ', $callback['method']) . '\'');
+        } else {
+            header('HTTP/1.1 405 Method Not Allowed');
+            header('content-type: application/json');
+            echo json_encode([
+                'status' => 405,
+                'message' => 'The method \'' . $_SERVER["REQUEST_METHOD"] . '\' is not allowed, please try again with one of the following method(s) \'' . implode(', ', $callback['method']) . '\''
+            ]);
+            die();
+        }
     }
 
     /* Callback */
     echo call_user_func_array($callback['callback'], $params);
-    header('Framework: Prototype 1.0.0');
+    header('x-powered-by: Prototype');
 
-    if (!empty($config['header'])){
+    if (!empty($config['header'])) {
         foreach ($config['header'] as $key => $value) {
             header($key . ': ' . $value);
         }
@@ -103,7 +109,8 @@ function serve(array|null $config = []) {
  * @param  array|null $method
  * @return void
  */
-function route(string $name, string $path, closure $callback, array|null $method = []) {
+function route(string $name, string $path, closure $callback, array|null $method = [])
+{
     global $routes;
 
     $routes[$name] = [
