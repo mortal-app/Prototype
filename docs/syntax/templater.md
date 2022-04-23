@@ -23,9 +23,7 @@ Example
 return template('home.php', ['title'=>'Home Page']);
 ```
 
-<details>
-<summary>Source</summary>
-<br>
+Source
 
  ```php 
 /**
@@ -59,7 +57,3 @@ function template(string $file, array|null $args = []) {
     return preg_replace($search, $replace, $html);
 }
 ```
-    
-</details>
-
-
