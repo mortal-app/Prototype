@@ -22,9 +22,9 @@ Prototype gives you a simple, secure, scalable, and minimal framework. while han
 
 Prototype is built for [PHP](https://www.php.net/), a general-purpose scripting language that is especially suited to web development. View the [docs](https://www.php.net/docs.php) for more information. Prototype requires no special plugins and can run on Apache, Ngix, or most php servers.
 
-### Quick start: Use prototype as a Static router
+### Quick start
 
-1. Setup your enviroment
+#### Setup your enviroment
 
 ```
 root
@@ -38,7 +38,7 @@ root
 
 <small>You must have rewrites enabled on your server,  if your using apache here is the `mod_rewrite` [doc](https://httpd.apache.org/docs/current/mod/mod_rewrite.html)</small>
 
-2. Configure rewrites
+#### Configure rewrites
 
   ```apache
 # .htaccess // Apache
@@ -64,7 +64,7 @@ location / {
 }
 ```
 
-3. Setup `index.php`
+#### Setup `index.php`
 
 ```php
 require_once __DIR__ . './vendor/prototype/autoload.php';
