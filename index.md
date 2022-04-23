@@ -82,10 +82,6 @@ serve([
 ]);
 ```
 
-### Configure Prototype
-
-- [See configuration options]({{ site.baseurl }}{% link docs/configuration.md %})
-
 ---
 
 ### License
