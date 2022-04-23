@@ -126,3 +126,34 @@ Example
  
 $someWhatSecureSql = sql_escape_mimic($_POST['username'])
 ```
+
+---
+
+## `sessionSet(key:string, value:string|null)`
+Example
+```php 
+/**
+ * sessionSet
+ *
+ * @param  string $key
+ * @param  string|null $value
+ * @return void
+ */
+ 
+sessionSet('userId', 1)
+```
+
+---
+
+## `sessionUnset(key:string)`
+Example
+```php 
+/**
+ * sessionUnset
+ *
+ * @param  string $key
+ * @return void
+ */
+ 
+sessionUnset('userId')
+```
