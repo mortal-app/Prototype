@@ -38,9 +38,7 @@ root
 
 <small>You must have rewrites enabled on your server,  if your using apache here is the `mod_rewrite` [doc](https://httpd.apache.org/docs/current/mod/mod_rewrite.html)</small>
 
-### Setup configuration
-
-1. Setup rewite config
+2. Configure rewrites
 
   ```apache
 # .htaccess // Apache
@@ -66,7 +64,7 @@ location / {
 }
 ```
 
-2. Setup `index.php`
+3. Setup `index.php`
 
 ```php
 require_once __DIR__ . './vendor/prototype/autoload.php';
