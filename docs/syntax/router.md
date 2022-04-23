@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Router
-parent: syntax
+parent: Syntax
 nav_order: 2
 ---
 
