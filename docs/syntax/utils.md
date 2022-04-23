@@ -17,6 +17,7 @@ nav_order: 4
 ---
 
 ## `path(name:string)`
+
 Example
 
 ```php 
@@ -45,6 +46,7 @@ function path(String $name) {
 ---
 
 ## `redirect(name:string, pathName:bool, params:array|null)`
+
 Example
 
 ```php 
@@ -83,6 +85,7 @@ function redirect(string $name, bool|null $pathName = true, array|null $params =
 ---
 
 ## `asset(name:string)`
+
 Example
 
 ```php 
@@ -106,6 +109,7 @@ function asset(string $name) {
 ---
 
 ## `throwError(errorCode:string, message:string)`
+
 Example
 
 ```php 
