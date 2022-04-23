@@ -16,7 +16,9 @@ nav_order: 5
 
 ---
 
-## `generateCsrfToken()`
+## Csrf
+
+### `generateCsrfToken()`
 Example
 ```php 
 /**
@@ -30,7 +32,7 @@ $csrf_token = generateCsrfToken() // "g44gfDT3smMkuyC3NTLQd67QRa69XTbK"
 
 ---
 
-## `validateCsrfToken(token:string)`
+### `validateCsrfToken(token:string)`
 Example
 ```php 
 /**
@@ -45,9 +47,9 @@ validateCsrfToken("g44gfDT3smMkuyC3NTLQd67QRa69XTbK") // true
 validateCsrfToken("00000000000000000000000000000000") // false
 ```
 
----
+## Validation
 
-## `validateEmail(email:string)`
+### `validateEmail(email:string)`
 Example
 ```php 
 /**
@@ -63,7 +65,7 @@ validateEmail("reeceharris$email.com") // false
 
 ---
 
-## `validateUrl(url:string)`
+### `validateUrl(url:string)`
 Example
 ```php 
 /**
@@ -77,9 +79,9 @@ validateEmail("prototype.mortal.app") // true
 validateEmail("prototype,mortal,app") // false
 ```
 
----
+## SQL
 
-## `connectSql(host:string, user:string, pass:string, db:string)`
+### `connectSql(host:string, user:string, pass:string, db:string)`
 Example
 ```php 
 /**
@@ -98,7 +100,7 @@ $conn = connectSql($ini['SQL_HOST'], $ini['SQL_USER'], $ini['SQL_PASS'], $ini['S
 
 ---
 
-## `sql_escape_real(inp:string, conn:object)`
+### `sql_escape_real(inp:string, conn:object)`
 Example
 ```php 
 /**
@@ -114,7 +116,7 @@ $secureSql = sql_escape_real($_POST['username'], $conn) // "NotReeceHarris"
 
 ---
 
-## `sql_escape_mimic(inp:string)`
+### `sql_escape_mimic(inp:string)`
 Example
 ```php 
 /**
@@ -127,9 +129,9 @@ Example
 $someWhatSecureSql = sql_escape_mimic($_POST['username'])
 ```
 
----
+## Session
 
-## `sessionSet(key:string, value:string|null)`
+### `sessionSet(key:string, value:string|null)`
 Example
 ```php 
 /**
@@ -145,7 +147,7 @@ sessionSet('userId', 1)
 
 ---
 
-## `sessionUnset(key:string)`
+### `sessionUnset(key:string)`
 Example
 ```php 
 /**
