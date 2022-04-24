@@ -41,7 +41,7 @@ Example
  * dispatch
  *
  * @param  array|null $config
- * @return function $callback
+ * @return function
  */
  
 serve([
