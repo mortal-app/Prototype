@@ -170,7 +170,7 @@ sessionUnset('userId');
 ### `protoHash(inp:string, salt:string|null, algo:string|null)`
 Example
 
-By default the hash algo is `sha256` and there is a pre-defined salt, I recommend supplying your salt
+By default the hash algo is `sha256` and there is a pre-defined salt, I recommend supplying your salt.
 ```php
 /**
  * protoHash
@@ -188,7 +188,7 @@ By default the hash algo is `sha256` and there is a pre-defined salt, I recommen
 ### `protoEncrypt(inp:string, key:string, algo:string|null)`
 Example
 
-By default the hash encryption algo is `aes-256-ctr`
+By default the hash encryption algo is `aes-256-ctr`.
 ```php
 /**
  * protoEncrypt
@@ -206,7 +206,7 @@ $encrypt = protoEncrypt('foo', 'bar', 'aes-256-ctr')
 ### `protoDecrypt(inp:string, key:string, algo:string|null)`
 Example
 
-By default the hash encryption algo is `aes-256-ctr`
+By default the hash encryption algo is `aes-256-ctr`.
 ```php
 /**
  * protoDecrypt
