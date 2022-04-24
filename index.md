@@ -84,7 +84,7 @@ serve([
 
 ### License
 
-Prototype is distributed by an [GPL-3.0 License ](https://github.com/NotReeceHarris/Prototype/blob/Production/LICENSE).
+Prototype is distributed by an [GPL-3.0 License ](https://github.com/NotReeceHarris/Prototype/blob/main/LICENSE).
 
 ### Contributing
 
@@ -105,4 +105,4 @@ email, or any other method with the owners of this repository before making a ch
 
 Prototype is committed to fostering a welcoming community.
 
-[View our Code of Conduct](https://github.com/NotReeceHarris/Prototype/blob/Production/CODE_OF_CONDUCT.md) on our GitHub repository.
+[View our Code of Conduct](https://github.com/NotReeceHarris/Prototype/blob/main/CODE_OF_CONDUCT.md) on our GitHub repository.
