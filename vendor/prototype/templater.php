@@ -13,10 +13,10 @@
  * template
  *
  * @param  string $file
- * @param  array $args
+ * @param  array|null $args
  * @return string $content
  */
-function template($file, $args = []) {
+function template(string $file, array|null $args = []) {
     $filePath = __DIR__ . '/../../templates/' . $file;
 
     if (!file_exists($filePath)) {
