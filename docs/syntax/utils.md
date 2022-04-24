@@ -23,10 +23,11 @@ Example
  * path
  *
  * @param  mixed $name
- * @return string $path
+ * @return string
  */
  
-path('foo');  // /foo/bar
+path('foo');  
+// /foo/bar
 ```
 
 ---
@@ -40,11 +41,14 @@ Example
  * @param  string $name
  * @param  array|null $params
  * @param  bool|null $pathName
- * @return redirect $path
+ * @return void
  */
  
-redirect('/foo/bar', false, ['id'=>1]); // redirect > /foo/bar?id=1
-redirect('foo', true, ['id'=>1]); // redirect > /foo/bar?id=1
+redirect('/foo/bar', false, ['id'=>1]); 
+// redirect > /foo/bar?id=1
+
+redirect('foo', true, ['id'=>1]); 
+// redirect > /foo/bar?id=1
 ```
 
 ---
@@ -56,10 +60,11 @@ Example
  * asset
  *
  * @param  string $name
- * @return string $path
+ * @return string
  */
  
-asset('img/foo.png');  // /static/img/foo.png
+asset('img/foo.png');  
+// /static/img/foo.png
 ```
 
 ---
@@ -72,7 +77,7 @@ Example
  *
  * @param  string $errorCode
  * @param  string $message
- * @return error
+ * @return void
  */
  
 throwError('Tea', 'Tea is an aromatic beverage prepared by pouring hot or boiling water over cured or fresh leaves of Camellia sinensis');
