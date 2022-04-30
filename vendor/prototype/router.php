@@ -91,7 +91,6 @@ function serve(array|null $config = [])
 
     /* Callback */
     echo call_user_func_array($callback['callback'], $params);
-    header('x-powered-by: Prototype');
 
     if (!empty($config['header'])) {
         foreach ($config['header'] as $key => $value) {
